@@ -1,8 +1,8 @@
 import { Router } from 'express'
-import helloRoutes from '../routes/helloRoutes'
+import sensorRoutes from './sensorRoutes'
 
 const router = Router();
 
-router.use('/hello', helloRoutes)
+router.use('/sensor', sensorRoutes)
 
 export default router;
