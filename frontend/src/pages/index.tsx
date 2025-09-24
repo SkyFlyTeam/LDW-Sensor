@@ -26,16 +26,17 @@ const MedidasPage = () => {
     return (
         <>
             <div className="flex gap-3 flex-col">
-                <h1>Paramêtros</h1>
+                <h1 className="text-4xl font-bold text-center my-6">Coleta de dados do sensor Dht11</h1>
 
                 <Card className="flex flex-col gap-3 md:p-6 p-0 md:shadow-[0px_4px_35px_0px_rgba(0,_0,_0,_0.12)] md:bg-white bg-white-bg shadow-none">
-                    <DataTable 
-                        columns={columns} 
+                    <DataTable
+                        columns={columns}
                         data={medidas}
                     />
                 </Card>
             </div>
         </>
+
     )
 }
 

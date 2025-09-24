@@ -27,8 +27,8 @@ import { Londrina_Solid } from "next/font/google";
 
 type MetaPermissions<TData> = {
   actions: {
-    onEdit: (row: TData) => void;    
-    onDelete: (row: TData) => void;  
+    onEdit: (row: TData) => void;
+    onDelete: (row: TData) => void;
   };
 };
 
@@ -48,22 +48,22 @@ export function DataTable<TData, TValue>({
   meta,
   actionButton
 }: DataTableProps<TData, TValue>) {
-	const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>(
+  const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>(
     []
   )
   const [globalFilter, setGlobalFilter] = useState<string>("");
-    
+
   const table = useReactTable({
     data,
     columns,
     meta: meta,
     getCoreRowModel: getCoreRowModel(),
-		onColumnFiltersChange: setColumnFilters,
+    onColumnFiltersChange: setColumnFilters,
     onGlobalFilterChange: setGlobalFilter,
     getFilteredRowModel: getFilteredRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
-		state: {
-      columnFilters, globalFilter 
+    state: {
+      columnFilters, globalFilter
     },
     initialState: { pagination: { pageSize } },
   })
@@ -83,14 +83,12 @@ export function DataTable<TData, TValue>({
               <TableRow key={headerGroup.id}>
                 {headerGroup.headers.map((header) => {
                   return (
-                    <TableHead key={header.id} className="text-dark-cyan font-bold text-xl px-6 py-4">
+                    <TableHead key={header.id} className="text-dark-cyan font-bold text-xl px-6 py-4 text-center">
                       {header.isPlaceholder
                         ? null
-                        : flexRender(
-                            header.column.columnDef.header,
-                            header.getContext()
-                          )}
+                        : flexRender(header.column.columnDef.header, header.getContext())}
                     </TableHead>
+
                   )
                 })}
               </TableRow>
@@ -114,14 +112,14 @@ export function DataTable<TData, TValue>({
               <TableRow>
                 <TableCell colSpan={columns.length} className="p-4 h-24 text-center">
                   <div className="flex flex-col gap-3 justify-center">
-                    <Image
-                      src="/sem-dados.svg"    
-                      alt="Imagem sem dados"               
-                      width={400}                         
-                      height={300}   
-                      style={{margin: "0 auto"}}                      
+                    <img
+                      src="/sem-dados.svg"
+                      alt="Imagem sem dados"
+                      width={400}
+                      height={300}
+                      style={{ margin: "0 auto" }}
                     />
-                    <span style={{fontFamily: "Londrina Solid"}} className="text-2xl">Oops! Parece que não tem dados aqui!</span>
+                    <span style={{ fontFamily: "Londrina Solid" }} className="text-2xl">Oops! Parece que não tem dados aqui!</span>
                   </div>
                 </TableCell>
               </TableRow>
@@ -148,16 +146,16 @@ export function DataTable<TData, TValue>({
           ))
         ) : (
           <div className="p-4">
-              <div className="flex flex-col gap-3 justify-center">
-                <Image
-                  src="/sem-dados.svg"    
-                  alt="Imagem sem dados"               
-                  width={400}                         
-                  height={300}   
-                  style={{margin: "0 auto"}}                      
-                />
-                <span style={{fontFamily: "Londrina Solid"}} className="text-2xl">Oops! Parece que não tem dados aqui!</span>
-              </div>
+            <div className="flex flex-col gap-3 justify-center">
+              <Image
+                src="/sem-dados.svg"
+                alt="Imagem sem dados"
+                width={400}
+                height={300}
+                style={{ margin: "0 auto" }}
+              />
+              <span style={{ fontFamily: "Londrina Solid" }} className="text-2xl">Oops! Parece que não tem dados aqui!</span>
+            </div>
           </div>
         )}
       </div>
