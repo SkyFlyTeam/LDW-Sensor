@@ -5,7 +5,7 @@ import { Medida } from "@/interfaces/Medida";
 const getAllMedidas = async (): Promise<Medida[] | any> => {
     try {
         const { data } = await Api.get('/sensor')
-        return data as Medida[]
+        return data.data as Medida[]
     } catch (error) {
         return []
     }

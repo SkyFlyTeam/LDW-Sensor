@@ -1,4 +1,4 @@
-import { DataTable } from "@/components/DataTable/Datatable"
+import { DataTable } from "@/components/Datatable/Datatable"
 import { Card } from "@/components/ui/card"
 import { columns } from "./columns"
 
@@ -15,13 +15,18 @@ const MedidasPage = () => {
     const [showEditParam, setShowEditParam] = useState<boolean>(false);
     const [showConfirmDelete, setShowConfimDelete] = useState<boolean>(false);
 
-    const fetchMedidas = () => {
+    const fetchMedidas = async() => {
         try {
-            medidaServices.getAllMedidas();
+            let medidasRecebidas = await medidaServices.getAllMedidas();
+            setMedidas(medidasRecebidas)
         } catch {
             console.log("erro")
         }
     }
+
+    useState(() => {
+        fetchMedidas();
+    }, []);
 
     return (
         <>
